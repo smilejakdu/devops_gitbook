@@ -16,6 +16,7 @@
     * [RDS 생성](ecr-ecs/fargate/rds-1.md)
     * [MySQL 접속 연결](ecr-ecs/fargate/mysql.md)
     * [운영 DB 연결 테스트](ecr-ecs/fargate/db.md)
+    * [로드밸런싱](ecr-ecs/fargate/undefined.md)
   * [EC2](ecr-ecs/ec2.md)
 * [오토스케일링](undefined/README.md)
   * [스케일 업](undefined/undefined.md)
