@@ -28,6 +28,7 @@
 * [Secret Manager](secret-manager.md)
 * [Route53](route53/README.md)
   * [ALB 와 Route53 연결](route53/alb-route53.md)
+  * [가비아 도메인 등록](route53/undefined.md)
 * [CloudWatch](cloudwatch/README.md)
   * [CloudWatch 슬랙 알람](cloudwatch/cloudwatch.md)
 * [Lambda](lambda/README.md)
