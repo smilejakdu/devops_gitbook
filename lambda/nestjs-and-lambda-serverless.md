@@ -133,3 +133,68 @@ ANY /dev (λ: app)
 
 ```
 
+
+
+serverless.yml 파일은
+
+```javascript
+service: lambda-test-node
+frameworkVersion: "3"
+
+plugins:
+    - serverless-offline
+    - serverless-dotenv-plugin
+    - serverless-plugin-optimize
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: ap-northeast-2 # Seoul
+  apiGateway:
+    shouldStartNameWithService: true
+    minimumCompressionSize: 1024
+
+functions:
+  app:
+    handler: dist/main.handler
+    timeout: 30
+    events:
+      - http: "ANY /{proxy+}"
+      - http: "GET /"
+
+```
+
+작성하고 나서 ,&#x20;
+
+main.ts 파일은
+
+```typescript
+import { NestFactory } from '@nestjs/core';
+import serverlessExpress from '@vendia/serverless-express';
+import { Callback, Context, Handler } from 'aws-lambda';
+import { AppModule } from './app.module';
+
+let server: Handler;
+
+async function bootstrap(): Promise<Handler> {
+  const app = await NestFactory.create(AppModule);
+  app.setGlobalPrefix('api');
+  await app.listen(3000);
+
+  const expressApp = app.getHttpAdapter().getInstance();
+  return serverlessExpress({ app: expressApp });
+}
+
+export const handler: Handler = async (
+    event: any,
+    context: Context,
+    callback: Callback,
+) => {
+  server = server ?? (await bootstrap());
+  return server(event, context, callback);
+};
+```
+
+작성해주고 난후 npx serverless offline -> http://localhost:3000/dev/api 로 접속을 해줍니다.
+
+<figure><img src="../.gitbook/assets/스크린샷 2023-12-26 오전 8.01.29.png" alt=""><figcaption></figcaption></figure>
