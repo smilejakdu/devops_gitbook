@@ -43,6 +43,4 @@ Service : saju-prod
 
 ![](https://cdn.inflearn.com/public/files/courses/329624/units/129025/470b6918-14f5-4961-b5fc-749e166f4c9b/blob)
 
-이전 수업다음 수업
-
-* \
+\
