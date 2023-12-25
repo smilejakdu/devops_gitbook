@@ -1,11 +1,12 @@
-# 로드밸런싱
+---
+description: 성
+---
 
-* 로드밸런서는 서버의 트래픽을 대상그룹으로 분산 시켜줍니다.
-* 여기서는 백엔드에 HTTPS를 적용하는데 사용합니다.
+# 보안 그룹 생성
 
 **4-1) 보안그룹 생성**
 
-* 위치 : EC2 > 보안 그룹 > 보안 그룹 생성
+* 위치 : <mark style="background-color:purple;">EC2 > 보안 그룹 > 보안 그룹 생성</mark>
 
 보안 그룹 (security group)을 사용해서 특정 IP와 포트 만 접근하도록 허용하는데, 여기서는 80 포트를 허용 합니다.
 
@@ -44,3 +45,5 @@ Service : saju-prod
 ![](https://cdn.inflearn.com/public/files/courses/329624/units/129025/470b6918-14f5-4961-b5fc-749e166f4c9b/blob)
 
 \
+
+
