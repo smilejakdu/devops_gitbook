@@ -38,7 +38,7 @@
   * [CloudWatch 슬랙 알람](cloudwatch/cloudwatch.md)
 * [Lambda](lambda/README.md)
   * [Api Gateway](lambda/api-gateway.md)
-  * [Page 2](lambda/page-2.md)
+  * [Lambda serverless 배포](lambda/lambda-serverless.md)
 * [FrontEnd Deploy](frontend-deploy/README.md)
   * [S3 를 이용한 배포](frontend-deploy/s3/README.md)
     * [개요](frontend-deploy/s3/undefined.md)
