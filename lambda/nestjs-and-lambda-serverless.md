@@ -216,3 +216,26 @@ sls deploy
 {% embed url="https://velog.io/@m16khb/NestJs-Lambda-Serverless" %}
 
 위의 링크를 참고할것&#x20;
+
+
+
+## 에러 상황
+
+#### Swagger Error
+
+
+
+```markdown
+Errors
+Hide
+ 
+Resolver error at paths./api/app.get.responses.200.content.application/json.schema.$ref
+Could not resolve reference: Could not resolve pointer: /components/schemas/ does not exist in document
+```
+
+위와 같은 에러가 발생했을때,&#x20;
+
+위의 에러가 발생했다면 내가 뭔가 Swagger 문서를 잘못 적용했는지 살펴본다.
+
+
+
