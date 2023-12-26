@@ -213,3 +213,6 @@ sls deploy
 
 라고 입력해도 된다.
 
+{% embed url="https://velog.io/@m16khb/NestJs-Lambda-Serverless" %}
+
+위의 링크를 참고할것&#x20;
