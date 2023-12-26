@@ -2,6 +2,12 @@
 
 {% embed url="https://docs.nestjs.com/faq/serverless" %}
 
+{% embed url="https://www.serverless.com/framework/docs/providers/aws/events/apigateway" %}
+
+nest js 공식문서와 serverless 공식문서를 반드시 참고하는것이 좋다.
+
+
+
 우선 위의 공식문서를 정독 3번정도 하는것을 추천합니다.
 
 
@@ -137,31 +143,63 @@ ANY /dev (λ: app)
 
 serverless.yml 파일은
 
-```javascript
-service: lambda-test-node
+```yaml
+service: microprotect-lambda-api
 frameworkVersion: "3"
 
 plugins:
     - serverless-offline
-    - serverless-dotenv-plugin
     - serverless-plugin-optimize
+    - serverless-vpc-plugin
+    - serverless-offline-scheduler
+
 
 provider:
   name: aws
   runtime: nodejs18.x
+  memorySize: 1024
+  timeout: 30
   region: ap-northeast-2 # Seoul
   apiGateway:
     shouldStartNameWithService: true
     minimumCompressionSize: 1024
+    binaryMediaTypes:
+      - '*/*'
+  iam:
+    role:
+      statements:
+        - Effect: "Allow"
+          Action:
+            - "s3:PutObject"
+            - "s3:PutObjectAcl"
+          Resource:
+            - "arn:aws:s3:::microprotect-lambda-api/*"
 
 functions:
   app:
-    handler: dist/main.handler
+    handler: dist/lambda.handler
     timeout: 30
     events:
       - http: "ANY /{proxy+}"
       - http: "GET /"
+      - http:
+          path: api/{proxy+}
+          method: any
+  # Worker
+  consultingNotifier:
+    handler: dist/worker/consulting_notifier.handler
+    timeout: 900
+    events:
+      - schedule: cron(* * * * ? *)
 
+custom:
+  serverless-offline:
+    httpPort: 5504
+    prefix: ''
+    babelOptions:
+      presets: ["env"]
+  optimize:
+    external: ['swagger-ui-dist']
 ```
 
 작성하고 나서 ,&#x20;
