@@ -165,7 +165,7 @@ export const handler: Handler = async (
 
 작성해주고 난후 npx serverless offline -> http://localhost:3000/dev/api 로 접속을 해줍니다.
 
-<figure><img src="../.gitbook/assets/스크린샷 2023-12-26 오전 8.01.29.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/스크린샷 2023-12-26 오전 8.01.29.png" alt=""><figcaption></figcaption></figure>
 
 동작이 잘되는것을 확인했으면 aws lambda 에 배포를 해줍니다.
 
