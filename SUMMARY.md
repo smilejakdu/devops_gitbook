@@ -42,6 +42,7 @@
   * [Nestjs & Lambda Serverless](lambda/nestjs-and-lambda-serverless/README.md)
     * [worker](lambda/nestjs-and-lambda-serverless/worker.md)
     * [환경 변수 설정](lambda/nestjs-and-lambda-serverless/undefined.md)
+    * [Lambda 용량 제한 Layer](lambda/nestjs-and-lambda-serverless/lambda-layer.md)
 * [FrontEnd Deploy](frontend-deploy/README.md)
   * [S3 를 이용한 배포](frontend-deploy/s3/README.md)
     * [개요](frontend-deploy/s3/undefined.md)
