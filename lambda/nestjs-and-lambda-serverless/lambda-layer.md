@@ -69,3 +69,81 @@ functions:
 실제로 이 설정을 사용할 때는 `{Common Layer ARN}`, `{FunctionOne Specific Layer ARN}`, `{FunctionTwo Specific Layer ARN}`를 해당하는 실제 Layer의 ARN으로 대체해야 합니다.
 
 이 방식을 통해 각 Lambda 함수가 공통적으로 사용하는 코드나 라이브러리를 공유하는 동시에, 각 함수의 특정 요구 사항을 만족시키는 Layer를 별도로 관리할 수 있습니다. 이는 코드 중복을 줄이고, 배포 패키지의 크기를 최적화하는 데 도움이 됩니다.
+
+
+
+## Layer/Nodejs
+
+Layer 를 만들때 nodejs 폴더안에 모듈들을 만들어야 합니다.
+
+그후에 `serverless.yml` 파일이 위치한 곳에서 `sls deploy` 명령어를 입력하게되면 AWS Lambda layer 에 올라가게 됩니다.
+
+`sls deploy` 명령어는 Serverless Framework를 사용하여 AWS Lambda와 관련된 자원(함수, Layer 등)을 배포할 때 사용하는 명령어입니다. 이 명령어는 프로젝트의 루트 디렉토리에서 실행해야 합니다. 프로젝트의 루트 디렉토리는 `serverless.yml` 파일이 위치한 곳입니다.
+
+구조가 다음과 같다고 가정할 때:
+
+```
+/your-project-root
+  /node-utils
+    /nodejs
+      /node_modules
+        /aws-serverless-express
+      package.json
+  serverless.yml
+```
+
+여기서 `/your-project-root`는 프로젝트의 최상위 폴더이고, `serverless.yml` 파일이 이 위치에 있어야 합니다. `node-utils` 폴더는 Layer의 코드와 종속성을 포함하고 있습니다.
+
+다음 단계를 따르세요:
+
+1.  터미널을 열고 프로젝트의 루트 디렉토리로 이동합니다.
+
+    ```
+    cd /path/to/your-project-root
+    ```
+2.  프로젝트 루트에서 `sls deploy` 명령어를 실행합니다.
+
+    ```
+    sls deploy
+    ```
+
+이 명령을 실행하면 Serverless Framework가 `serverless.yml` 파일의 설정에 따라 AWS에 자원을 배포합니다. Layer의 경우 `node-utils` 디렉토리 내용이 Layer로 패키징되어 AWS Lambda에 업로드됩니다.
+
+모든 설정이 올바르고 `serverless.yml` 파일이 올바르게 구성되어 있다면, `sls deploy` 명령은 해당 Layer를 포함하여 필요한 모든 AWS 자원을 배포할 것입니다.
+
+
+
+그런데 불편한 사항이 있습니다.
+
+<figure><img src="../../.gitbook/assets/스크린샷 2024-01-01 오후 8.46.47.png" alt=""><figcaption></figcaption></figure>
+
+`package.json` 파일과 `package-lock.json` 파일 과 node\_modules 파일 위치가 다릅니다.
+
+package.json 파일이 있는곳에서 npm install 하게되면 ,&#x20;
+
+
+
+```
+nodejs/
+node_modules/
+  └── 여기에 필요한 npm 패키지들이 위치
+package.json (선택 사항)
+
+```
+
+하지만 우리가 원하는것은 nodejs 폴더 안에 node\_modules 가 위치해야합니다
+
+```markdown
+nodejs/
+└── node_modules/
+    └── 여기에 필요한 npm 패키지들이 위치
+package.json (선택 사항)
+
+```
+
+이렇게 위치해야합니다.
+
+이럴경우 그럼 어떻게 해야할까요 ?
+
+
+
