@@ -147,3 +147,36 @@ package.json (선택 사항)
 
 
 
+## nodejs 폴더로 node\_modules 이동
+
+자동화를 위해, `npm install`이 실행된 후에 `node_modules` 디렉토리를 `nodejs` 폴더로 이동시키는 작업을 스크립트로 만들 수 있습니다. 이 스크립트는 `package.json` 파일에 사용자 정의 스크립트로 추가할 수 있으며, `npm` 명령으로 실행될 수 있습니다.
+
+아래는 `package.json`에 추가할 수 있는 스크립트 예시입니다:
+
+```json
+"scripts": {
+  "postinstall": "mv node_modules nodejs",
+  "predeploy": "npm install && npm run postinstall",
+  "deploy": "sls deploy"
+}
+```
+
+이 스크립트들의 역할은 다음과 같습니다:
+
+* `postinstall`: `npm install`이 실행된 직후에 자동으로 `node_modules` 디렉토리를 `nodejs` 디렉토리로 이동시킵니다.
+* `predeploy`: 배포하기 전에 필요한 패키지를 설치하고 `postinstall` 스크립트를 실행합니다.
+* `deploy`: Serverless Framework를 사용하여 배포를 실행합니다.
+
+이제 터미널에서 다음과 같이 `npm run deploy`를 실행하면, `npm install`이 실행되고, 모듈들이 적절한 위치로 이동된 후, Serverless Framework를 통해 배포가 진행됩니다.
+
+```bash
+npm run predeploy
+npm run deploy
+```
+
+이 스크립트를 사용하면 수동으로 디렉토리를 이동시키는 단계를 자동화할 수 있습니다. 이 과정은 `node-utils` 디렉토리에서 실행되어야 합니다.
+
+또한, `package.json`의 `scripts` 섹션에 명령을 추가하기 전에, 현재 디렉토리가 `node-utils` 디렉토리인지 확인하세요. 이 스크립트는 `node-utils` 디렉토리 안에 `node_modules`가 생성되고, 이후 `nodejs`로 옮겨져야 하는 상황에 맞게 설정된 것입니다.
+
+마지막으로, `sls deploy`는 Serverless Framework가 설치된 위치에서 실행되어야 하며, 모든 경로와 커맨드는 실행 환경에 따라서 조정해야 합니다.
+
