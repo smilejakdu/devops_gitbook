@@ -180,3 +180,62 @@ npm run deploy
 
 마지막으로, `sls deploy`는 Serverless Framework가 설치된 위치에서 실행되어야 하며, 모든 경로와 커맨드는 실행 환경에 따라서 조정해야 합니다.
 
+`sls create --template aws-nodejs --path workerModules --name workerModules`
+
+명령어를 통해 serverless.yml 을 만들어 질거에요
+
+필요없는 handler.js 를 삭제해 줍니다.&#x20;
+
+<figure><img src="../../.gitbook/assets/스크린샷 2024-01-02 오전 4.37.28.png" alt=""><figcaption></figcaption></figure>
+
+package.json 파일은 layer 폴더의 제일 최상단에 둔다. 위의 package.json 파일은 전체 모듈들이 들어있다.
+
+<figure><img src="../../.gitbook/assets/스크린샷 2024-01-02 오전 4.38.54.png" alt=""><figcaption></figcaption></figure>
+
+commonModules 안 package.json 파일에는 공통으로 사용하는 모듈들을 모아둔다.
+
+그리고 functionModules 는 함수에 가져다가 사용할 모듈들만 가져다가 사용하도록 한다.
+
+`functionModules` 폴더안에 serverless.yml 파일을 작성합니다.
+
+```yaml
+service: functionModules
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: ap-northeast-2
+
+layers:
+  NodeFunctionUtils:
+    path: node-utils
+    description: "Node Function Utils"
+    compatibleRuntimes:
+      - nodejs18.x
+
+```
+
+package.json 파일은&#x20;
+
+```json
+{
+  "name": "utils",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "mv node_modules nodejs",
+    "predeploy": "npm install && npm run postinstall"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@nestjs/swagger": "^7.1.17",
+    "swagger-ui-express": "^5.0.0"
+  }
+}
+
+```
+
+이렇게 작성해줍니다.
