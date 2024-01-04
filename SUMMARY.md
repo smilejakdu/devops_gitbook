@@ -49,3 +49,6 @@
     * [개요](frontend-deploy/s3/undefined.md)
     * [S3](frontend-deploy/s3/s3.md)
     * [로드밸런서](frontend-deploy/s3/undefined-1.md)
+* [AWS 크레딧](aws/README.md)
+  * [Page 1](aws/page-1.md)
+  * [Page 2](aws/page-2.md)
