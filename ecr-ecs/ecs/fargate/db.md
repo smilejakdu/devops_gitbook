@@ -78,7 +78,7 @@ AWS 접속 -> IAM -> 사용자 생성 -> Access ID, Access Key 를 발급 받는
 
 로컬 터미널로 가서 `aws configure` 를 입력한다.
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
 위와 같이 셋팅하게 된다 우리는 region 이 서울 이니까 서울로 맞춰주기만 하면 된다.
 
@@ -107,7 +107,7 @@ host dev-i-* dev-mi-*
 
 그중에 State : running 으로 돌고있는서버의 <mark style="color:yellow;">`Instace`</mark> 를 복사한다.
 
-![](<../../.gitbook/assets/스크린샷 2023-12-23 오후 1.39.20.png>)
+![](<../../../.gitbook/assets/스크린샷 2023-12-23 오후 1.39.20.png>)
 
 
 

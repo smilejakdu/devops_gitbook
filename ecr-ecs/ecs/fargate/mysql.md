@@ -55,9 +55,9 @@ bation 을 통해서 접근을 하거나 open vpn 이나 SSM 으로 접근하게
 
 #### Bation 으로 활용할 경우
 
-<figure><img src="../../.gitbook/assets/스크린샷 2023-12-23 오후 1.07.56.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/스크린샷 2023-12-23 오후 1.07.56.png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/스크린샷 2023-12-23 오후 1.09.13.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/스크린샷 2023-12-23 오후 1.09.13.png" alt=""><figcaption></figcaption></figure>
 
 public 으로 접근 가능한 인스턴스를 하나 생성한다.
 
@@ -69,5 +69,5 @@ public 으로 접근 가능한 인스턴스를 하나 생성한다.
 
 접속하게 되면 bation 으로 보안그룹설정했던 녀석들은 접속을 할 수 있다.
 
-<figure><img src="../../.gitbook/assets/스크린샷 2023-12-23 오후 1.14.29.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/스크린샷 2023-12-23 오후 1.14.29.png" alt=""><figcaption></figcaption></figure>
 

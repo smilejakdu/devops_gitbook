@@ -1,4 +1,4 @@
-# Lambda
+# ✅ Lambda
 
 {% embed url="https://www.serverless.com/framework/docs/getting-started/" %}
 

@@ -1,7 +1,3 @@
----
-description: 성
----
-
 # 보안 그룹 생성
 
 **4-1) 보안그룹 생성**
@@ -44,6 +40,5 @@ Service : saju-prod
 
 ![](https://cdn.inflearn.com/public/files/courses/329624/units/129025/470b6918-14f5-4961-b5fc-749e166f4c9b/blob)
 
-\
 
 

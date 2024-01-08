@@ -46,7 +46,7 @@ RDS 는 Fargate 와는 전혀 상관이 없지만 서버를 올리는데 무조�
 *   EC2 나 Fargate 에게만 RDS에 요청해야하기 때문에 RDS 접근을 요청보내는 서버 에게만 허용하는것이 좋다.\
 
 
-    <figure><img src="../../.gitbook/assets/스크린샷 2023-12-23 오후 12.18.50.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../../.gitbook/assets/스크린샷 2023-12-23 오후 12.18.50.png" alt=""><figcaption></figcaption></figure>
 
     이와같이 EC2 서버 보안그룹을 생성하고 난뒤에 불러오는것이 좋다.
 
